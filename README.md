@@ -1,7 +1,7 @@
 # TOWARDS NEURAL EMULATION OF VOLTAGE-CONTROLLED OSCILLATOR
 
 ### Links
-- [Some audio examples]() 🔈
+- [Some audio examples](https://riccardovib.github.io/NeuralOSC_pages/) 🔈
 - [Datasets](https://zenodo.org/records/15196138)
 
 ## Installation
