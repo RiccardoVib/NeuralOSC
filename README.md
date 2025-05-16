@@ -22,7 +22,6 @@ In the file 'starter.py' must be set the 'data_dir'. For inference set the varia
 
 ## Bibtex
 
-```
 ## Aliasing
 
 <div align="left">
