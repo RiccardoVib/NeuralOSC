@@ -23,3 +23,8 @@ In the file 'starter.py' must be set the 'data_dir'. For inference set the varia
 ## Bibtex
 
 ```
+## Aliasing
+
+<div align="left">
+ <img src="./fig/aliasing_fft.pdf" width="400">
+</div>
