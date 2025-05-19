@@ -45,7 +45,8 @@ Available options:
 * --batch_size - The size of each batch [int] (default=512)
 * --units = The hidden layer size (amount of units) of the network. [ [int] ] (default=64)
 * --input_size - The number of samples to use as input [int] (default=96)
-* --model_internal_dim - The number of samples to be output of the compression layer [int] (default=4)
+* --model_internal_dim - The number of samples to be output of the compression layer (only apply to RNN, GRU and LSTM model) [int] (default=4)
+* --kernel_size - The size of the kernel in the TCN layers (only apply to TCN model) [int] (default=3)
 * --learning_rate - the initial learning rate [float] (default=3e-4)
 * --only_inference - When True, skips training and runs only inference on the pre-model. When False, runs training and inference on the trained model. [bool] (default=False)
  

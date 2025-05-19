@@ -86,44 +86,98 @@ class RNN_OSC(tf.keras.layers.Layer):
 
         return out
 
-
-class CNN_OSC(tf.keras.layers.Layer):
-    def __init__(self, units, input_size, batch_size, type=tf.float32):
-        super(CNN_OSC, self).__init__()
+class TCN_OSC(tf.keras.layers.Layer):
+    def __init__(self, units, input_size, kernel_size, batch_size, type=tf.float32):
+        super(TCN_OSC, self).__init__()
 
         self.type = type
         self.batch_size = batch_size
         self.input_size = input_size
         self.units = units
-        self.rec = tf.keras.layers.Conv1D(filters=self.units, kernel_size=input_size, name='OSC')
+
+        # Create TCN residual blocks with increasing dilation
+        # Causal dilated convolution
+        self.cnn1 = tf.keras.layers.Conv1D(filters=units,
+                   kernel_size=kernel_size,
+                   dilation_rate=2,
+                   padding='causal')
+
+        # Second dilated causal convolution
+        self.cnn2 = tf.keras.layers.Conv1D(filters=units,
+                   kernel_size=kernel_size,
+                   dilation_rate=4,
+                   padding='causal')
+
+        # Third dilated causal convolution
+        self.cnn3 = tf.keras.layers.Conv1D(filters=units,
+                   kernel_size=kernel_size,
+                   dilation_rate=8,
+                   padding='causal')
+
+        # Forth dilated causal convolution
+        self.cnn4 = tf.keras.layers.Conv1D(filters=units,
+                    kernel_size=kernel_size,
+                    dilation_rate=16,
+                    padding='causal')
+
+        self.take_last = tf.keras.layers.Lambda(lambda z: z[:, -1, :])
+        self.cnn1d_1 =  tf.keras.layers.Conv1D(units, kernel_size=1, padding='same')
+        self.cnn1d_2 =  tf.keras.layers.Conv1D(units, kernel_size=1, padding='same')
+        self.cnn1d_3 =  tf.keras.layers.Conv1D(units, kernel_size=1, padding='same')
+        self.cnn1d_4 =  tf.keras.layers.Conv1D(units, kernel_size=1, padding='same')
+
         self.out = tf.keras.layers.Dense(units=1, activation='tanh', name='output_layer')
         self.film = FiLM(self.units)
 
     def call(self, input):
+        # First dilated causal convolution
+        prev_x = input[0]
         cond = input[1]
 
-        out = self.rec(input[0])
+        # Causal dilated convolution
+        out =  self.cnn1(prev_x)
+        out =  tf.keras.layers.Activation('relu')(out)
+        prev_x = self.cnn1d_1(prev_x)
+        out = tf.keras.layers.add([prev_x, out])
+        prev_x = out
 
-        out = self.film(out[:,0,:], cond)
+        out =  self.cnn2(out)
+        out =  tf.keras.layers.Activation('relu')(out)
+        prev_x = self.cnn1d_2(prev_x)
+        out = tf.keras.layers.add([prev_x, out])
+        prev_x = out
+
+        out =  self.cnn3(out)
+        out =  tf.keras.layers.Activation('relu')(out)
+        prev_x = self.cnn1d_3(prev_x)
+        out = tf.keras.layers.add([prev_x, out])
+        prev_x = out
+
+        out =  self.cnn4(out)
+        out =  tf.keras.layers.Activation('relu')(out)
+        prev_x = self.cnn1d_4(prev_x)
+        out = tf.keras.layers.add([prev_x, out])
+
+        out = self.take_last(out)
+        out = self.film(out, cond)
         out = self.out(out)
 
         return out
-
         
-def create_model(units, input_size, batch_size, mode, model_internal_dim):
+def create_model(units, input_size, kernel_size, batch_size, mode, model_internal_dim):
 
     # Defining inputs
     inputs = tf.keras.layers.Input(batch_shape=(batch_size, input_size, 1), name='input')
     conds = tf.keras.layers.Input(batch_shape=(batch_size, 1), name='conds')
 
     if mode == 'LSTM':
-        outputs = LSTM_OSC(units, input_size, batch_size, model_internal_dim)([inputs, conds])
+        outputs = LSTM_OSC(units=units, input_size=input_size, batch_size=batch_size, model_internal_dim=model_internal_dim)([inputs, conds])
     elif mode == 'RNN':
-        outputs = RNN_OSC(units + 28, input_size, batch_size, model_internal_dim)([inputs, conds])
+        outputs = RNN_OSC(units=units, input_size=input_size, batch_size=batch_size, model_internal_dim=model_internal_dim)([inputs, conds])
     elif mode == 'GRU':
-        outputs = GRU_OSC(units+units//8, input_size, batch_size, model_internal_dim)([inputs, conds])
-    elif mode == 'CNN':
-        outputs = CNN_OSC(units*8, input_size, batch_size)([inputs, conds])
+        outputs = GRU_OSC(units=units, input_size=input_size, batch_size=batch_size, model_internal_dim=model_internal_dim)([inputs, conds])
+    elif mode == 'TCN':
+        outputs = TCN_OSC(units=units,  input_size=input_size, batch_size=batch_size, kernel_size=kernel_size)([inputs, conds])
                
     model = tf.keras.models.Model([conds, inputs], outputs)
 

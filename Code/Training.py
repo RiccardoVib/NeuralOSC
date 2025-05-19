@@ -40,6 +40,7 @@ def train(**kwargs):
     epochs = kwargs.get('epochs', 60)
     fs = kwargs.get('fs', 48000)
     model_internal_dim = kwargs.get('model_internal_dim', 4)
+    kernel_size = kwargs.get('kernel_size', 4)
 
     # set all the seed in case reproducibility is desired
     #np.random.seed(42)
@@ -55,7 +56,7 @@ def train(**kwargs):
     # tf.config.experimental.set_virtual_device_configuration(gpu, [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=18000)])
 
     
-    model = create_model(units=units, input_size=input_size, batch_size=batch_size, mode=model_name, model_internal_dim=model_internal_dim)
+    model = create_model(units=units, input_size=input_size, kernel_size=kernel_size, batch_size=batch_size, mode=model_name, model_internal_dim=model_internal_dim)
 
 
     # define callbacks: where to store the weights

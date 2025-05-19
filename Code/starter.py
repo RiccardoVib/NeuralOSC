@@ -23,7 +23,9 @@ def parse_args():
 
     parser.add_argument('--input_size', default=96, type=int, nargs='?', help='The number of samples to use as input.')
 
-    parser.add_argument('--model_internal_dim', default=4, type=int, nargs='?', help='The number of samples to be output of the compression layer.')
+    parser.add_argument('--model_internal_dim', default=4, type=int, nargs='?', help='The number of samples to be output of the compression layer (only apply to RNN, GRU and LSTM model).')
+
+    parser.add_argument('--kernel_size', default=3, type=int, nargs='?', help='The size of the kernel in the TCN layers (only apply to TCN model).')
 
     parser.add_argument('--units', default=64, nargs='+', type=int, help='Hidden layer size (amount of units) of the network.')
 
@@ -47,6 +49,7 @@ def start_train(args):
           batch_size=args.batch_size,
           input_dim=args.input_size,
           model_internal_dim=args.model_internal_dim,
+          kernel_size=args.kernel_size,
           units=args.units,
           learning_rate=args.learning_rate,
           inference=args.only_inference)
