@@ -73,19 +73,15 @@ The proposed methodology learns the target waveshape and replicates any aliasing
 The following frequency domain plots examples demonstrates that the model (LSTM variant) accurately reproduces the frequency content of the target recordings without introducing additional aliasing.
 
 <div align="left">
- <img src="./fig/10aliasing_fft.png" width="200">
- <img src="./fig/20aliasing_fft.png" width="200">
- <img src="./fig/30aliasing_fft.png" width="200">
+ <img src="./fig/10aliasing_fft.png" width="250">
+ <img src="./fig/20aliasing_fft.png" width="250">
+ <img src="./fig/30aliasing_fft.png" width="250">
 </div>
 
 <div align="left">
- <img src="./fig/50aliasing_fft.png" width="200">
-<img src="./fig/60aliasing_fft.png" width="200">
-<img src="./fig/70aliasing_fft.png" width="200">
-</div>
-
-<div align="left">
-<img src="./fig/70aliasing_fft.png" width="200">
+ <img src="./fig/50aliasing_fft.png" width="250">
+<img src="./fig/60aliasing_fft.png" width="250">
+<img src="./fig/70aliasing_fft.png" width="250">
 </div>
 
 # VST Download
