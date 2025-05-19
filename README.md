@@ -74,30 +74,14 @@ The following frequency domain plots examples demonstrates that the model (LSTM 
 
 <div align="left">
  <img src="./fig/10aliasing_fft.png" width="400">
- <img src="./fig/10aliasing_fft.png" width="400">
-</div>
-
-<div align="left">
  <img src="./fig/20aliasing_fft.png" width="400">
-</div>
-
-<div align="left">
  <img src="./fig/30aliasing_fft.png" width="400">
 </div>
 
 <div align="left">
  <img src="./fig/40aliasing_fft.png" width="400">
-</div>
-
-<div align="left">
  <img src="./fig/50aliasing_fft.png" width="400">
-</div>
-
-<div align="left">
  <img src="./fig/60aliasing_fft.png" width="400">
-</div>
-
-<div align="left">
  <img src="./fig/70aliasing_fft.png" width="400">
 </div>
 
