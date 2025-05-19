@@ -102,7 +102,5 @@ The follow plots show how the waveshape of the analog VCO undergoes significant 
 
 Coming soon...
 
-```
 
-
-## Bibtex
+# Bibtex
