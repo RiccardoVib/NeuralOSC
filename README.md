@@ -62,6 +62,7 @@ To only run inference on an existing pre-trained model, use the "only_inference"
 Example inference case:
 ```
 cd ./code/
+
 python starter.py --datasets OSCMonoSquare --model LSTM --only_inference True
 ```
 
