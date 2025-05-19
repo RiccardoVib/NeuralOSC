@@ -67,13 +67,11 @@ cd ./code/
 python starter.py --datasets OSCMonoSquare --model LSTM --only_inference True
 ```
 
-
 ## Aliasing
 
 <div align="left">
- <img src="./fig/aliasing_fft.pdf" width="400">
+ <img src="./fig/10aliasing_fft.png" width="400">
 </div>
-
 
 
 # VST Download
