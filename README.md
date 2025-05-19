@@ -88,6 +88,7 @@ The plots refer to triangle waves emulated by the LSTM model.
 ## Frequency-dependent waveshapes
 
 The follow plots show how the waveshape of the analog VCO undergoes significant changes at various frequencies and how the model effectively learns these variations. 
+The top row refers to sawtooth waveshape, while the bottom row to the square.
 
 <div align="left">
  <img src="./fig/0plot_saw_wave.png" width="400">
