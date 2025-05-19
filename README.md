@@ -4,7 +4,7 @@ This code repository is for the article _Towards Neural Emulation of Voltage-Con
 
 This repository contains all the necessary utilities to use our architectures. Find the code located inside the "./Code" folder, and the weights of pre-trained models inside the "./Weights" folder
 
-Visit our [companion page with audio examples](https://riccardovib.github.io/NeuralOSC_pages/))
+Visit our [companion page with audio examples](https://riccardovib.github.io/NeuralOSC_pages/)
 
 ### Contents
 
