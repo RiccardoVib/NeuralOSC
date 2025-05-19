@@ -69,10 +69,36 @@ python starter.py --datasets OSCMonoSquare --model LSTM --only_inference True
 
 ## Aliasing
 
+The proposed methodology learns the target waveshape and replicates any aliasing present in the recordings. Therefore, the quality of the analog antialiasing filter used during the recording of the analog VCO and the digital antialiasing filter applied during data downsampling significantly affect the model's aliasing performance. 
+The following frequency domain plots examples demonstrates that the model (LSTM variant) accurately reproduces the frequency content of the target recordings without introducing additional aliasing.
+
 <div align="left">
  <img src="./fig/10aliasing_fft.png" width="400">
 </div>
 
+<div align="left">
+ <img src="./fig/20aliasing_fft.png" width="400">
+</div>
+
+<div align="left">
+ <img src="./fig/30aliasing_fft.png" width="400">
+</div>
+
+<div align="left">
+ <img src="./fig/40aliasing_fft.png" width="400">
+</div>
+
+<div align="left">
+ <img src="./fig/50aliasing_fft.png" width="400">
+</div>
+
+<div align="left">
+ <img src="./fig/60aliasing_fft.png" width="400">
+</div>
+
+<div align="left">
+ <img src="./fig/70aliasing_fft.png" width="400">
+</div>
 
 # VST Download
 
