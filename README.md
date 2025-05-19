@@ -90,10 +90,12 @@ The plots refer to triangle waves emulated by the LSTM model.
 The follow plots demonstrate how the waveshape of the analog VCO undergoes significant changes at various frequencies and how the model effectively learns these variations. 
 
 <div align="left">
- <img src="./fig/0plot_saw_wave.png" width="250">
-<img src="./fig/4plot_saw_wave.png" width="250">
-<img src="./fig/0plot_sq_wave.png" width="250">
-<img src="./fig/4plot_sq_wave.png" width="250">
+ <img src="./fig/0plot_saw_wave.png" width="400">
+<img src="./fig/4plot_saw_wave.png" width="400">
+</div>
+<div align="left">
+<img src="./fig/0plot_sq_wave.png" width="400">
+<img src="./fig/4plot_sq_wave.png" width="400">
 </div>
 
 # VST Download
