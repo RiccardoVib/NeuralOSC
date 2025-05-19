@@ -10,15 +10,17 @@ Visit our [companion page with audio examples](https://riccardovib.github.io/Neu
 
 1. [Datasets](#datasets)
 2. [How to Train and Run Inference](#how-to-train-and-run-inference)
-3. [VST Download](#vst-download)
+3. [Aliasing](#Aliasing)
+4. [Frequency-dependent waveshape](#Frequency-dependent waveshape)
+5. [VST Download](#vst-download)
 
 <br/>
 
 # Datasets
 
-Datsets are available [here](https://zenodo.org/records/15196138)
+Datasets are available [here](https://zenodo.org/records/15196138)
 
-Our architectures were evaluated on three analog waveshape: 
+Our architectures were evaluated on three analog waveshapes: 
 - Triangle 
 - Square
 - Sawtooth
@@ -26,7 +28,7 @@ Our architectures were evaluated on three analog waveshape:
 
 # How To Train and Run Inference 
 
-This code relies on tensorflow.
+This code relies on TensorFlow.
 First, install Python dependencies:
 ```
 cd ./code
@@ -43,10 +45,10 @@ Available options:
 * --epochs - Number of training epochs. [int] (default=60)
 * --model - The name of the model to train ('TCN', 'RNN', 'GRU', 'LSTM') [str] (default=" ")
 * --batch_size - The size of each batch [int] (default=512)
-* --units = The hidden layer size (amount of units) of the network. [ [int] ] (default=64)
+* --units = The hidden layer size (number of units) of the network. [ [int] ] (default=64)
 * --input_size - The number of samples to use as input [int] (default=96)
-* --model_internal_dim - The number of samples to be output of the compression layer (only apply to RNN, GRU and LSTM model) [int] (default=4)
-* --kernel_size - The size of the kernel in the TCN layers (only apply to TCN model) [int] (default=3)
+* --model_internal_dim - The number of samples to be output by the compression layer (only apply to RNN, GRU, and LSTM models) [int] (default=4)
+* --kernel_size - The size of the kernel in the TCN layers (only applies to the TCN model) [int] (default=3)
 * --learning_rate - the initial learning rate [float] (default=3e-4)
 * --only_inference - When True, skips training and runs only inference on the pre-model. When False, runs training and inference on the trained model. [bool] (default=False)
  
@@ -70,7 +72,7 @@ python starter.py --datasets OSCMonoSquare --model LSTM --only_inference True
 ## Aliasing
 
 The proposed methodology learns the target waveshape and replicates any aliasing present in the recordings. Therefore, the quality of the analog antialiasing filter used during the recording of the analog VCO and the digital antialiasing filter applied during data downsampling significantly affect the model's aliasing performance. 
-The following frequency domain plots examples show that the model reproduces the frequency content of the target recordings without introducing additional aliasing.
+The following frequency domain plots show that the model reproduces the frequency content of the target recordings without introducing additional aliasing.
 The plots refer to triangle waves emulated by the LSTM model.
 
 <div align="left">
@@ -85,10 +87,10 @@ The plots refer to triangle waves emulated by the LSTM model.
 <img src="./fig/60aliasing_fft.png" width="250">
 </div>
 
-## Frequency-dependent waveshapes
+## Frequency-dependent waveshape
 
-The follow plots show how the waveshape of the analog VCO undergoes significant changes at various frequencies and how the model effectively learns these variations. 
-The top row refers to sawtooth waveshape, while the bottom row to the square.
+The following plots show how the waveshape of the analog VCO undergoes significant changes at various frequencies and how the model effectively learns these variations. 
+The top row refers to the sawtooth waveshape, while the bottom row refers to the square.
 
 <div align="left">
  <img src="./fig/0plot_saw_wave.png" width="400">
