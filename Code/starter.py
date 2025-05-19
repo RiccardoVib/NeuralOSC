@@ -1,43 +1,60 @@
+from Training import train
+import argparse
+
+
 """
 main script
 
 """
+def parse_args():
+    parser = argparse.ArgumentParser(description='Trains an State-based network. Can also be used to run pure inference.')
 
-from Training import train
+    parser.add_argument('--model_save_dir', default='./models', type=str, nargs='?', help='Folder directory in which to store the trained models.')
 
-# number of epochs
-EPOCHS = 50#55000
+    parser.add_argument('--data_dir', default='./datasets', type=str, nargs='?', help='Folder directory in which the datasets are stored.')
 
-# initial learning rate
-LR = 3e-4
+    parser.add_argument('--datasets', default=" ", type=str, nargs='+', help='The names of the datasets to use. [OSCMonoSquare, OSCMonoTri, OSCMonoSaw]')
 
-# data_dir: the directory in which datasets are stored
-data_dir = '../../Files/'
+    parser.add_argument('--model', default=" ", type=str, nargs='+', help='The name of the model to train (TCN, RNN, GRU, LSTM).')
 
-# name of dataset to be used
-model_names = ['LSTM', 'RNN', 'GRU', 'CNN']
+    parser.add_argument('--epochs', default=60, type=int, nargs='?', help='Number of training epochs.')
 
-datasets = ['OSCMonoSquare', 'OSCMonoTri', 'OSCMonoSaw']
+    parser.add_argument('--batch_size', default=8, type=int, nargs='?', help='Batch size.')
 
-input_dims = [96]
-units = [16]
-BATCH_SIZEs = [512]
-model_internal_dims = [4]
+    parser.add_argument('--input_size', default=96, type=int, nargs='?', help='The number of samples to use as input.')
 
-for model_name in model_names:
-    for model_internal_dim in model_internal_dims:
-        for BATCH_SIZE in BATCH_SIZEs:
-            for input_dim in input_dims:
-                  for dataset in datasets:
-                        for unit in units:
-                              train(data_dir=data_dir,
-                                    save_folder=model_name+dataset + '_' + str(unit) + '_' + str(input_dim) + '_' + str(BATCH_SIZE) + '_' + str(model_internal_dim),
-                                    dataset=dataset,
-                                    batch_size=BATCH_SIZE,
-                                    learning_rate=LR,
-                                    input_dim=input_dim,
-                                    units=unit,
-                                    model_internal_dim=model_internal_dim,
-                                    epochs=EPOCHS,
-                                    model_name=model_name,
-                                    inference=False)
+    parser.add_argument('--model_internal_dim', default=4, type=int, nargs='?', help='The number of samples to be output of the compression layer.')
+
+    parser.add_argument('--units', default=64, nargs='+', type=int, help='Hidden layer size (amount of units) of the network.')
+
+    parser.add_argument('--learning_rate', default=3e-4, type=float, nargs='?', help='Initial learning rate.')
+
+    parser.add_argument('--only_inference', default=False, type=bool, nargs='?', help='When True, skips training and runs only inference on the pre-model. When False, runs training and inference on the trained model.')
+
+    return parser.parse_args()
+
+
+def start_train(args):
+
+    print("######### Preparing for training/inference #########")
+    print("\n")
+    train(data_dir=args.data_dir,
+          model_save_dir=args.model_save_dir,
+          save_folder=f'ED_{args.dataset}_{args.units}',
+          dataset=args.datasets,
+          model=args.model,
+          epochs=args.epochs,
+          batch_size=args.batch_size,
+          input_dim=args.input_size,
+          model_internal_dim=args.model_internal_dim,
+          units=args.units,
+          learning_rate=args.learning_rate,
+          inference=args.only_inference)
+
+
+def main():
+    args = parse_args()
+    start_train(args)
+
+if __name__ == '__main__':
+    main()

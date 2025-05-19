@@ -40,11 +40,12 @@ Available options:
 * --model_save_dir - Folder directory in which to store the trained models [str] (default ="./models")
 * --data_dir - Folder directory in which the datasets are stored [str] (default="./datasets")
 * --datasets - The names of the datasets to use. [ [str] ] (default=[" "] )
-* --epochs - Number of training epochs. [int] (defaut=60)
+* --epochs - Number of training epochs. [int] (default=60)
 * --model - The name of the model to train ('TCN', 'RNN', 'GRU', 'LSTM') [str] (default=" ")
 * --batch_size - The size of each batch [int] (default=512)
-* --hidden_layer_sizes = The hidden layer size (amount of units) of the network. [ [int] ] (default=64)
+* --units = The hidden layer size (amount of units) of the network. [ [int] ] (default=64)
 * --input_size - The number of samples to use as input [int] (default=96)
+* --model_internal_dim - The number of samples to be output of the compression layer [int] (default=4)
 * --learning_rate - the initial learning rate [float] (default=3e-4)
 * --only_inference - When True, skips training and runs only inference on the pre-model. When False, runs training and inference on the trained model. [bool] (default=False)
  
@@ -53,7 +54,7 @@ Example training case:
 ```
 cd ./code/
 
-python starter.py --datasets OD --model LSTM --epochs 500 
+python starter.py --datasets OSCMonoSquare --model LSTM --epochs 500
 ```
 
 To only run inference on an existing pre-trained model, use the "only_inference". In this case, ensure you have the existing model and dataset (to use for inference) both in their respective directories with corresponding names.
@@ -61,8 +62,16 @@ To only run inference on an existing pre-trained model, use the "only_inference"
 Example inference case:
 ```
 cd ./code/
-python starter.py --datasets OD --model LSTM --only_inference True
+python starter.py --datasets OSCMonoSquare --model LSTM --only_inference True
 ```
+
+
+## Aliasing
+
+<div align="left">
+ <img src="./fig/aliasing_fft.pdf" width="400">
+</div>
+
 
 
 # VST Download
@@ -71,17 +80,5 @@ Coming soon...
 
 ```
 
-## Model training and inference
-```
-python starter.py
-```
-In the file 'starter.py' must be set the 'data_dir'. For inference set the variable at True
-
 
 ## Bibtex
-
-## Aliasing
-
-<div align="left">
- <img src="./fig/aliasing_fft.pdf" width="400">
-</div>
