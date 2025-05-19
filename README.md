@@ -11,7 +11,7 @@ Visit our [companion page with audio examples](https://riccardovib.github.io/Neu
 1. [Datasets](#datasets)
 2. [How to Train and Run Inference](#how-to-train-and-run-inference)
 3. [Aliasing](#Aliasing)
-4. [Frequency-dependent waveshape](#Frequency-dependent waveshape)
+4. [Frequency-dependent waveshape](#Frequency-dependent-waveshape)
 5. [VST Download](#vst-download)
 
 <br/>
