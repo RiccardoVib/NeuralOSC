@@ -10,9 +10,7 @@ Visit our [companion page with audio examples](https://riccardovib.github.io/Neu
 
 1. [Datasets](#datasets)
 2. [How to Train and Run Inference](#how-to-train-and-run-inference)
-3. [Aliasing](#Aliasing)
-4. [Frequency-dependent waveshape](#Frequency-dependent-waveshape)
-5. [VST Download](#vst-download)
+3. [VST Download](#vst-download)
 
 <br/>
 
@@ -68,38 +66,6 @@ cd ./code/
 
 python starter.py --datasets OSCMonoSquare --model LSTM --only_inference True
 ```
-
-## Aliasing
-
-The proposed methodology learns the target waveshape and replicates any aliasing present in the recordings. Therefore, the quality of the analog antialiasing filter used during the recording of the analog VCO and the digital antialiasing filter applied during data downsampling significantly affect the model's aliasing performance. 
-The following frequency domain plots show that the model reproduces the frequency content of the target recordings without introducing additional aliasing.
-The plots refer to triangle waves emulated by the LSTM model.
-
-<div align="left">
- <img src="./fig/10aliasing_fft.png" width="250">
- <img src="./fig/20aliasing_fft.png" width="250">
- <img src="./fig/30aliasing_fft.png" width="250">
-</div>
-
-<div align="left">
- <img src="./fig/40aliasing_fft.png" width="250">
-<img src="./fig/50aliasing_fft.png" width="250">
-<img src="./fig/60aliasing_fft.png" width="250">
-</div>
-
-## Frequency-dependent waveshape
-
-The following plots show how the waveshape of the analog VCO undergoes significant changes at various frequencies and how the model effectively learns these variations. 
-The top row refers to the sawtooth waveshape, while the bottom row refers to the square.
-
-<div align="left">
- <img src="./fig/0plot_saw_wave.png" width="400">
-<img src="./fig/4plot_saw_wave.png" width="400">
-</div>
-<div align="left">
-<img src="./fig/0plot_sq_wave.png" width="400">
-<img src="./fig/4plot_sq_wave.png" width="400">
-</div>
 
 # VST Download
 
