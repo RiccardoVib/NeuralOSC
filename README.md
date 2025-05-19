@@ -81,7 +81,7 @@ The plots refer to triangle wave emualted by the LSTM model.
 
 <div align="left">
  <img src="./fig/40aliasing_fft.png" width="250">
-<img src="./fig/60aliasing_fft.png" width="250">
+<img src="./fig/50aliasing_fft.png" width="250">
 <img src="./fig/70aliasing_fft.png" width="250">
 </div>
 
