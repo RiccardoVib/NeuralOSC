@@ -73,3 +73,17 @@ Coming soon...
 
 
 # Bibtex
+
+If you use the code included in this repository or any part of it, please acknowledge 
+its authors by adding a reference to these publications:
+
+```
+
+@inproceedings{simionatoVCO_2025,
+	author = {Simionato Riccardo and Fasciani Stefano},
+	title = {Towards Neural Emulation of Voltage-Controlled Oscillator},
+	booktitle = {Proceedings of the International Conference on Digital Audio Effects (DAFx25)},
+	year = {2025},
+    address = {Ancona, Italy},
+}
+```
