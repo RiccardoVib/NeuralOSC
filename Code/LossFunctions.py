@@ -15,7 +15,7 @@
 # If you use this code or any part of it in any program or publication, please acknowledge
 # its authors by adding a reference to this publication:
 #
-# R. Simionato, 2025, "Towards Neural Emulation of Voltage-Controlled Oscillator" in proceedings of the 23th Digital Audio Effect Conference, Ancona, Italy.
+# R. Simionato, 2025, "Towards Neural Emulation of Voltage-Controlled Oscillator" in proceedings of the 25th Digital Audio Effect Conference, Ancona, Italy.
 
 import tensorflow as tf
 class NMSELoss(tf.keras.losses.Loss):

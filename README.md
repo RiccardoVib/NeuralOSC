@@ -6,6 +6,16 @@ This repository contains all the necessary utilities to use our architectures. F
 
 Visit our [companion page with audio examples](https://riccardovib.github.io/NeuralOSC_pages/)
 
+### Folder Structure
+
+```
+./
+├── Code
+├── fig
+└── Weights
+    ├── 
+```
+
 ### Contents
 
 1. [Datasets](#datasets)
