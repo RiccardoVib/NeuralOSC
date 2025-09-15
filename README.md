@@ -36,7 +36,7 @@ Our architectures were evaluated on three analog waveshapes:
 
 # How To Train and Run Inference 
 
-This code relies on TensorFlow.
+This code relies on Python 3.9 and TensorFlow.
 First, install Python dependencies:
 ```
 cd ./code
