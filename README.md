@@ -1,6 +1,6 @@
 # TOWARDS NEURAL EMULATION OF VOLTAGE-CONTROLLED OSCILLATOR
 
-This code repository is for the article _Towards Neural Emulation of Voltage-Controlled Oscillator_, on review.
+This code repository is for the article _Towards Neural Emulation of Voltage-Controlled Oscillator_, in Proceedings of the International Conference on Digital Audio Effects (DAFx25).
 
 This repository contains all the necessary utilities to use our architectures. Find the code located inside the "./Code" folder, and the weights of pre-trained models inside the "./Weights" folder
 
